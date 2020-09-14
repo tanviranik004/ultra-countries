@@ -1,11 +1,49 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
 
 const CountriesDetail = () => {
-    const {countriesName}= useParams();
+    const {countryName}= useParams();
+    const[countries,setCountries,] = useState({});
+   // const {name, capital,population,flag, region} = props.countries;
+    const flagStyle = { height:'50px'}
+    const {flag,homeName}=countries;
+    const history= useHistory();
+    const handleClick =(homeName)=>{
+        const url = `/home/${homeName}`;
+        history.push(url);
+    }
+    const buttonStyle = {
+        backgroundColor:'#4CAF50',
+        border: '1px solid tomato',
+        margin: '5px',
+        display: 'inline-block',
+        fontSize: '16px',
+        borderRadius: '5px',
+        paddingLeft: '20px'
+    }
+   
+    
+    useEffect(()=>{
+         const url = `https://restcountries.eu/rest/v2/name/${countryName}`;
+         fetch(url)
+        .then(res=>res.json())
+        .then(data => setCountries(data[0]));
+    }, [])
     return (
         <div>
-            <h3>This is Countries Detail Component:{countriesName}</h3>
+            <p>This is Countries Detail Component: {countryName}</p>
+            <p>CountryName: {countries.name}</p>
+            <p>Capital: {countries.capital}</p>
+            <p>Region: {countries.region}</p>
+            <p>Population: {countries.population}</p>
+            <p>Country Flag: </p>
+            <img style={flagStyle} src={flag} alt=""/><br/>
+
+            <button style={buttonStyle} onClick={()=>handleClick(homeName)}>back home</button>
+            
+            
+             
+
         </div>
     );
 };

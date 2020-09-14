@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+   
+    const Countries = (props) => {
 
-const Countries = (props) => {
-    const {name, capital,population,flag, region} = props.countries;
-    const flagStyle = { height:'50px'}
+    const {name} = props.countries;
+   // const flagStyle = { height:'50px'}
+   
+   
     const countryStyle ={
+        backgroundColor:'tomato',
         border: '1px solid purple',
         margin: '20px',
         padding: '20px',
@@ -12,13 +16,7 @@ const Countries = (props) => {
     }
     return (
         <div style={countryStyle}>
-            <h2>Name: <Link to={`/name/${name}`}>Show of detail: {name}</Link></h2>
-            <p>Capital: {capital}</p>
-            <p>Population:{population}</p>
-            <p><small>Region: {region}</small></p>
-            <img  style={flagStyle} src={flag} alt=""/>
-
-            
+            <h2>Name: <Link to={`/name/${name}`}>Show of detail: {name}</Link></h2> 
         </div>
     );
 };

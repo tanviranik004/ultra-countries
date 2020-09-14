@@ -15,10 +15,10 @@ function App() {
   return (
     <Router>
      <Switch>
-       <Route path='/home'>
+       <Route path='/home/:homeName'>
          <Home/>
        </Route>
-       <Route path='/name/:countriesName'>
+       <Route path='/name/:countryName'>
          <CountriesDetail/>
        </Route>
        

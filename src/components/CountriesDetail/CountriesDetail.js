@@ -6,10 +6,10 @@ const CountriesDetail = () => {
     const[countries,setCountries,] = useState({});
    // const {name, capital,population,flag, region} = props.countries;
     const flagStyle = { height:'50px'}
-    const {flag,homeName}=countries;
+    const {flag,home}=countries;
     const history= useHistory();
-    const handleClick =(homeName)=>{
-        const url = `/home/${homeName}`;
+    const handleClick =(home)=>{
+        const url = `/home/${home}`;
         history.push(url);
     }
     const buttonStyle = {
@@ -39,7 +39,7 @@ const CountriesDetail = () => {
             <p>Country Flag: </p>
             <img style={flagStyle} src={flag} alt=""/><br/>
 
-            <button style={buttonStyle} onClick={()=>handleClick(homeName)}>back home</button>
+            <button style={buttonStyle} onClick={()=>handleClick(home)}>back home</button>
             
             
              

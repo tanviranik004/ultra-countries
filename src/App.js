@@ -15,7 +15,7 @@ function App() {
   return (
     <Router>
      <Switch>
-       <Route path='/home/:homeName'>
+       <Route path='/home'>
          <Home/>
        </Route>
        <Route path='/name/:countryName'>
@@ -23,6 +23,7 @@ function App() {
        </Route>
        
         <Route exact path='/'>
+          <Home/>
 
         </Route>
         <Route path='*'>
